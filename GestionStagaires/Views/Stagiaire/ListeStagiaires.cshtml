@@ -1,0 +1,62 @@
+﻿@model IEnumerable<GestionStagaires.Models.Stagiaire>
+
+@{
+    ViewData["Title"] = "ListeStagiaires";
+}
+
+
+<div class="alert alert-primary text-center" role="alert">
+    Liste des stagiaires
+</div>
+
+<p>
+    <a class="btn btn-outline-secondary" asp-controller="Stagiaire" asp-action="CréerStagiaire">Créer un stagiaire</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prénom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Téléphone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Entreprise)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sujet)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prénom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Téléphone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Entreprise)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sujet)
+            </td>
+            <td>
+                    <a class="btn btn-danger" asp-controller="Stagiaire" asp-action="Modifier" asp-route-id="@item.Id">Modifier</a> |
+                <a class="btn btn-primary" asp-controller="Stagiaire" asp-action="Afficher" asp-route-id="@item.Id">Afficher</a> |
+                <a class="btn btn-success" asp-controller="Stagiaire" asp-action="Supprimer" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
